@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 const listUsers = (req, res) => {
     User.findAll({
-        attributes: ['name','email','dob','gender','mobile_number']
+        attributes: ['id','name','email','dob','gender','mobile_number']
     })
     .then(users => {
         res.render('users/index', {data: users});
@@ -27,9 +27,21 @@ const createUser = (req, res) => {
         address: req.body.address,
         profile_image: req.file.originalname
     })
-        .then(user => res.redirect('/'))
+        .then(user => res.redirect('/users/'))
         .catch(err => res.json('error: ' + err))
 };
+
+const deleteUser = (req, res) => {
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(result=> res.redirect('/users/'))
+    .catch(err => res.json('error: '+ err))
+};
+
 module.exports.listUsers = listUsers;
 module.exports.displayAddForm = displayAddForm;
 module.exports.createUser = createUser;
+module.exports.deleteUser = deleteUser;

@@ -28,6 +28,7 @@
                 <th scope="col">DOB</th>
                 <th scope="col">Gender</th>
                 <th scope="col">Mobile</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -41,6 +42,9 @@
                         <td><%= data[i].dob%></td>
                         <td><%= data[i].gender%></td>
                         <td><%= data[i].mobile_number%></td>
+                        <td>
+                                <a class="btn btn-danger delete" onclick="return confirm('Are You sure?')" href="../users/delete/<%=data[i].id%>">Delete</a>
+                        </td>
                     </tr>
                 <% }
                   

@@ -21,4 +21,6 @@ router.post('/add', upload.single('profile_image'),[
     UserController.createUser(req,res);
 });
 
+router.get('/delete/:id', UserController.deleteUser);
+
 module.exports = router;
