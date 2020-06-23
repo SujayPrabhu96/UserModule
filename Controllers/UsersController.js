@@ -1,9 +1,14 @@
 const User = require('../models/User');
 
 const listUsers = (req, res) => {
-    res.render('users/', {
-        title: 'Users'
-    });
+    User.findAll({
+        attributes: ['name','email','dob','gender','mobile_number']
+    })
+    .then(users => {
+        res.render('users/index', {data: users});
+    })
+    .catch(err => res.json(err));
+
 };
 
 const displayAddForm = (req, res) => {

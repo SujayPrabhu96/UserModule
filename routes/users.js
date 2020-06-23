@@ -18,7 +18,6 @@ router.post('/add', upload.single('profile_image'),[
     if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
     }
-    console.log("CREATING USERS");
     UserController.createUser(req,res);
 });
 
