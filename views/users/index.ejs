@@ -43,7 +43,8 @@
                         <td><%= data[i].gender%></td>
                         <td><%= data[i].mobile_number%></td>
                         <td>
-                                <a class="btn btn-danger delete" onclick="return confirm('Are You sure?')" href="../users/delete/<%=data[i].id%>">Delete</a>
+                            <a class="btn btn-success edit" href="../users/edit/<%=data[i].id%>">Edit</a>
+                            <a class="btn btn-danger delete" onclick="return confirm('Are You sure?')" href="../users/delete/<%=data[i].id%>">Delete</a>
                         </td>
                     </tr>
                 <% }
