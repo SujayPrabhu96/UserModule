@@ -5,9 +5,9 @@ const listUsers = (req, res) => {
         attributes: ['name','email','dob','gender','mobile_number']
     })
     .then(users => {
-        res.render('users/index', {data: users});
+        res.render('users/index', {data: users, error: undefined});
     })
-    .catch(error => res.json('error: ' + err));
+    .catch(error => res.render('users/index', {error: error}));
 
 };
 
@@ -28,7 +28,8 @@ const createUser = (req, res) => {
         profile_image: req.file.originalname
     })
         .then(user => res.redirect('/'))
-        .catch(err => res.json('error: ' + err))
+        .catch(error => res.render('users/index', {error: error}));
+
 };
 module.exports.listUsers = listUsers;
 module.exports.displayAddForm = displayAddForm;

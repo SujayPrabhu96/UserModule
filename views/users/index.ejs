@@ -16,6 +16,9 @@
     <div>
         <a href="/users/add" class="btn btn-secondary ml-3">New User</a>
     </div>
+    <% if (error) { %>
+        <p class="alert alert-danger mt-4"><%- error %></p>
+    <% } else { %>  
     <br>
     <table class="table">
         <!--listing all users-->
@@ -37,7 +40,7 @@
                         <th scope="row"><%= (i+1) %></th>
                         <td><%= data[i].name%></td>
                         <td><%= data[i].email%></td>
-                        <td><%= data[i].db%></td>
+                        <td><%= data[i].dob%></td>
                         <td><%= data[i].gender%></td>
                         <td><%= data[i].mobile_number%></td>
                     </tr>
@@ -52,6 +55,7 @@
             <% }  %>
         </tbody>
     </table>
+    <% } %>
 </body>
 
 </html>
