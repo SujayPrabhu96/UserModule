@@ -7,7 +7,7 @@ const listUsers = (req, res) => {
     .then(users => {
         res.render('users/index', {data: users});
     })
-    .catch(err => res.json(err));
+    .catch(error => res.json('error: ' + err));
 
 };
 
