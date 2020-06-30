@@ -1,9 +1,14 @@
 const User = require('../models/User');
 
 const listUsers = (req, res) => {
-    res.render('users/', {
-        title: 'Users'
-    });
+    User.findAll({
+        attributes: ['name','email','dob','gender','mobile_number']
+    })
+    .then(users => {
+        res.render('users/index', {data: users, error: undefined});
+    })
+    .catch(error => res.render('users/index', {error: error}));
+
 };
 
 const displayAddForm = (req, res) => {
@@ -23,7 +28,8 @@ const createUser = (req, res) => {
         profile_image: req.file.originalname
     })
         .then(user => res.redirect('/'))
-        .catch(err => res.json('error: ' + err))
+        .catch(error => res.render('users/index', {error: error}));
+
 };
 module.exports.listUsers = listUsers;
 module.exports.displayAddForm = displayAddForm;

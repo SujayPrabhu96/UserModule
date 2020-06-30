@@ -14,18 +14,48 @@
 <body>
     <br><br>
     <div>
-        <a href="/" class="btn btn-primary ml-3">Home</a>
         <a href="/users/add" class="btn btn-secondary ml-3">New User</a>
     </div>
+    <% if (error) { %>
+        <p class="alert alert-danger mt-4"><%- error %></p>
+    <% } else { %>  
     <br>
-    <table class="table"> <!--listing all users-->
+    <table class="table">
+        <!--listing all users-->
         <thead>
             <tr>
+                <th scope="col">Sl. No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Mobile</th>
             </tr>
         </thead>
         <tbody>
+            <% if(data.length){
+
+                for(var i = 0; i< data.length; i++) {%>
+                    <tr>
+                        <th scope="row"><%= (i+1) %></th>
+                        <td><%= data[i].name%></td>
+                        <td><%= data[i].email%></td>
+                        <td><%= data[i].dob%></td>
+                        <td><%= data[i].gender%></td>
+                        <td><%= data[i].mobile_number%></td>
+                    </tr>
+                <% }
+                  
+            } else { %>
+                <tr>
+                    <td colspan="6" style="text-align: center;">
+                        No User Available
+                    </td>
+                </tr>
+            <% }  %>
         </tbody>
     </table>
+    <% } %>
 </body>
 
 </html>
