@@ -13,14 +13,18 @@ const validate = () => {
 
 const validateCsvRow = (row_data) => {
     let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    if(!row_data[0])
+    if(!row_data[0]){
         return "Invalid Name";
-    if(reg.test(row_data[1]) == false)
+    }
+    if(!reg.test(row_data[1])){
         return "Invalid Email Address";
-    if(row_data[3] != 'male' && row_data[3] != 'female')
+    }
+    if(row_data[3] != 'male' && row_data[3] != 'female'){
         return "Invalid Gender";
-    if(!/^[0-9]+$/.test(row_data[4]))
+    }
+    if(!/^[0-9]+$/.test(row_data[4])){
         return "Invalid Mobile Number";
+    }
 };
 
 const validateCsvData = (rows) => {
