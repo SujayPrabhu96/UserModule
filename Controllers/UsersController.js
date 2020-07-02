@@ -47,7 +47,7 @@ const editUser = (req, res) => {
                 title: 'Edit User'
             })
         })
-        .catch(err => res.json('error: ' + err));
+        .catch(error => res.render('users/index', {error: error}));
 };
 
 const updateUser = (req, res) => {
@@ -64,7 +64,7 @@ const updateUser = (req, res) => {
         { where: { id: req.params.id } }
     )
         .then(user => res.redirect('/users/'))
-        .catch(err => res.json('error: ' + err))
+        .catch(error => res.render('users/index', {error: error}));
 };
 
 const deleteUser = (req, res) => {
