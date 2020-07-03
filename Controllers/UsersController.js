@@ -110,7 +110,7 @@ const uploadCsv = (req, res) => {
             fileRows.shift();  //removes header row
             const validationError = Validation.validateCsvData(fileRows);
             if (validationError) {
-                return res.status(403).json({ error: validationError });
+                res.render('users/index', {error: validationError});
             }
             createUserWithCSV(fileRows)
                 .then(users => {
