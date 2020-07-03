@@ -8,10 +8,12 @@
 <body>
     <br><br>
     <div>
-        <!-- <a href="/users" class="btn btn-primary ml-3">Home</a> -->
         <a href="/users/add" class="btn btn-secondary ml-3">New User</a>
         <a href="/users/import" class="btn btn-secondary ml-3">Go To Import</a>
     </div>
+    <% if (error) { %>
+        <p class="alert alert-danger mt-4"><%- error %></p>
+    <% } else { %>  
     <br>
     <table class="table">
         <!--listing all users-->
@@ -44,9 +46,16 @@
                     </tr>
                 <% }
                   
-            }  %>
+            } else { %>
+                <tr>
+                    <td colspan="6" style="text-align: center;">
+                        No User Available
+                    </td>
+                </tr>
+            <% }  %>
         </tbody>
     </table>
+    <% } %>
 </body>
 
 </html>

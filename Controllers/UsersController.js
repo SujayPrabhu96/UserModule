@@ -8,10 +8,11 @@ const listUsers = (req, res) => {
     User.findAll({
         attributes: ['id', 'name', 'email', 'dob', 'gender', 'mobile_number']
     })
-        .then(users => {
-            res.render('users/index', { data: users });
-        })
-        .catch(err => res.json(err));
+    .then(users => {
+        res.render('users/index', {data: users});
+    })
+    .catch(error => res.render('users/index', {error: error}));
+
 
 };
 
@@ -73,8 +74,9 @@ const deleteUser = (req, res) => {
             id: req.params.id
         }
     })
-        .then(result => res.redirect('/users/'))
-        .catch(err => res.json('error: ' + err))
+     .then(user => res.redirect('/'))
+     .catch(error => res.render('users/index', {error: error}));
+
 };
 
 const renderImport = (req, res) => {
