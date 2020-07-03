@@ -28,7 +28,7 @@ module.exports = db.sequelize.define(
             type: Sequelize.TEXT
         },
         profile_image: {
-            type: Sequelize.STRING
+            type: Sequelize.TEXT
         }
     },
     {
