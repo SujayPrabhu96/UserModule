@@ -1,5 +1,5 @@
 # UserModule
-Module to list, add , update users
+Module to list, add, update, delete, import users using node, express and sequelize
 
 * Install Dependencies
 
